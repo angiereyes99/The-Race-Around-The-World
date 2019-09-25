@@ -1,0 +1,30 @@
+{
+  "name": "clicktimeproject",
+  "version": "1.0.0",
+  "description": "\"A stop watch application consisting of a start/stop button and history table\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angiereyes99/The-Race-Around-The-World.git"
+  },
+  "keywords": [
+    "\"stopwatch\"",
+    "\"node\"",
+    "\"clicktime\""
+  ],
+  "author": "\"angelo reyes\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angiereyes99/The-Race-Around-The-World/issues"
+  },
+  "homepage": "https://github.com/angiereyes99/The-Race-Around-The-World#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
