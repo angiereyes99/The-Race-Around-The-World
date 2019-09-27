@@ -1,68 +1,111 @@
-//this will be used to set the timer going for the stop watch
-//uses geolocation,window
+var lbl = document.createElement("label");
+//document.getElementById("lbl").style.fontSize = "large"
+lbl.setAttribute("Id", "timer");
+var lbltxt = document.createTextNode("Timer: ");
+lbl.appendChild(lbltxt);
+    
+var p = document.createElement("p");
 
-var timeBegan = null
-    , timeStopped = null
-    , stoppedDuration = 0
-    , started = null;
+var startbtn = document.createElement("button");
+startbtn.setAttribute("onclick", "start()");
+startbtn.setAttribute("Id", "startbtn");
+var startbtntxt = document.createTextNode(" START ");
+startbtn.appendChild(startbtntxt);
 
-function start() {
-    if (timeBegan === null) {
-        timeBegan = new Date();
-        navigator.geolocation.getCurrentPosition()
+var resetbtn = document.createElement("button");
+resetbtn.setAttribute("onclick", "reset()");
+resetbtn.setAttribute("Id", "resetbtn");
+var resetbtntxt = document.createTextNode(" RESET ");
+resetbtn.appendChild(resetbtntxt);
+
+var lapbtn = document.createElement("button");
+lapbtn.setAttribute("onclick", "newLap()");
+var lapbtntxt = document.createTextNode(" LAP ");
+lapbtn.appendChild(lapbtntxt);
+
+var lapssect = document.createElement("table");
+lapssect.setAttribute("Id", "lapssection");
+var historyTable = document.createTextNode("History Time Table");
+lapssect.appendChild(historyTable);
+    
+document.body.appendChild(lbl);
+document.body.appendChild(p);
+document.body.appendChild(startbtn);
+document.body.appendChild(lapbtn);
+document.body.appendChild(resetbtn);
+var p = document.createElement("p");
+document.body.appendChild(p);
+document.body.appendChild(lapssect);    
+    
+    
+var m=0.0;    // minute
+var s=0.0;    // second
+var ms=0.0;   // millisecond
+var newlap=1;
+var started=false;  
+var interval;
+    
+function timer() {
+    document.getElementById("timer").innerHTML="Timer: "+m+":"+s+":"+ms/10;
+    ms+=10;
+        
+        if(ms==1000){
+            s+=1;
+            ms=0;
+        }
+        
+        if(s==60){
+            m+=1;
+            s=0;
+        }
     }
-
-    if (timeStopped !== null) {
-        stoppedDuration += (new Date() - timeStopped);
+    
+    function newLap() {
+        if(started==true){
+            var laplbl = document.createElement("label");
+            laplbl.setAttribute("class","lap");
+            var laplbltxt = document.createTextNode("LAP"+" "+newlap+" - "+m+":"+s+":"+ms/10);
+            laplbl.appendChild(laplbltxt);
+            
+            // lap diveider
+            var lp = document.createElement("p");
+            lapssect.appendChild(lp);
+            lapssect.appendChild(laplbl);
+            newlap+=1;
+        }
     }
-    console.log(stoppedDuration);
-
-    started = setInterval(clockRunning, 10);	
-};
-
-function stop() {
-    timeStopped = new Date();
-    clearInterval(started);
-};
-function reset() {
-    clearInterval(started);
-    stoppedDuration = 0;
-    timeBegan = null;
-    timeStopped = null;
-    document.getElementById("display-area").innerHTML = "00:00:00.000";
-};
-
-function clockRunning(){
-    var currentTime = new Date()
-        , timeElapsed = new Date(currentTime - timeBegan - stoppedDuration)
-        , hour = timeElapsed.getUTCHours()
-        , min = timeElapsed.getUTCMinutes()
-        , sec = timeElapsed.getUTCSeconds()
-        , ms = timeElapsed.getUTCMilliseconds();
-
-    document.getElementById("display-area").innerHTML = 
-        (hour > 9 ? hour : "0" + hour) + ":" + 
-        (min > 9 ? min : "0" + min) + ":" + 
-        (sec > 9 ? sec : "0" + sec) + "." + 
-        (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
-};
-
-
-
-/*var localStorage = window.localStorage;
-var data = localStorage.getItem('watchData');
-var start = undefined;
-var stop  = undefined;
-var timeHstory = [];
-
-function startTime(){
-    document.getElementById("timezone").innerHTML = "Wait..";
-    navigator.geolocation.getCurrentPosition();
-}
-function stopTime(){
-    document.getElementById("timezone").innerHTML = "Wait..";
-    navigator.geolocation.getCurrentPosition();
-}
-
-function getData(){
-}*/
+    
+    function start(){
+        if(started==false){
+            document.getElementById("startbtn").innerHTML=" PAUSE ";
+            interval=setInterval(timer,10);
+            started=true;
+        }
+        else{
+            clearInterval(interval);
+            document.getElementById("startbtn").innerHTML=" RESUME ";
+            started=false;
+        }
+    }
+    
+    function reset(){
+        var lapsarr=document.getElementById("lapssection").getElementsByClassName("lap");
+        var l=lapsarr.length;
+        var ps=lapssect.getElementsByTagName("p");
+        for(i=0; i<l; i+=1){
+            lapssect.removeChild(lapsarr[0]);
+        }
+        
+        for(j=0; j<l; j+=1){
+            lapssect.removeChild(ps[0]);
+        }
+        
+        clearInterval(interval);
+        m=0;    // minute
+        s=0;    // second
+        ms=0;   // millisecond
+        newlap=1;
+        started=false; 
+        document.getElementById("startbtn").innerHTML=" Start ";
+        document.getElementById("timer").innerHTML="Timer: ";
+    }

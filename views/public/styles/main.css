@@ -1,22 +1,33 @@
 html, body {
-    background-color: #66b3ff;
+    background-color: #a2a8a3;
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Courier;
+    font-size:30px;
+    color: white;
     overflow: auto;
     text-align: center;
-    font: Courier
 }
 * {box-sizing: border-box}
 
 h1{
-    font-family: Courier, sans-serif;
-    font-size: 55px;
-    max-width: 75%;
-    text-align: center;
+    font-family: Courier;
+    font-size: 45px;
+    color: bisque;
+    overflow: auto;
 }
 
-#display-area{
-    font-size: 100px;
+button {
+    background-color: beige;
+    border-color: solid black;
+    border-width: thick;
+}
+
+label{
+    font-size: 30px;
+}
+
+#timer{
+    font-size: 26px;
 }
 
 table {
@@ -27,7 +38,7 @@ table {
 
 table, th, td{
     border: 1px solid black;
-    border-width: thick;
+    border-width: medium;
 }
 
 .btn-secondary.custom-btn {
