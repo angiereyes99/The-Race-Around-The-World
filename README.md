@@ -1,5 +1,6 @@
-# The-Race-Around-The-World (Steps to run the program!)
-
+# The-Race-Around-The-World 
+# NOTE: Documentation discussing assumptions made and implementation can be found in the CT_Documentation.pdf file in the repo.
+  
   # 1.
     clone the repo and in your terminal use -> git clone "repo-you-copied" 
 
@@ -14,5 +15,3 @@
 
   # 5.
     Enjoy!
-  
-    To read the documentation, a .pdf file read "CT_Documentation.pdf" can be found in repo.
