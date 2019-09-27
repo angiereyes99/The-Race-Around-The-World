@@ -1,5 +1,4 @@
 var lbl = document.createElement("label");
-//document.getElementById("lbl").style.fontSize = "large"
 lbl.setAttribute("Id", "timer");
 var lbltxt = document.createTextNode("Timer: ");
 lbl.appendChild(lbltxt);
@@ -18,11 +17,6 @@ resetbtn.setAttribute("Id", "resetbtn");
 var resetbtntxt = document.createTextNode(" RESET ");
 resetbtn.appendChild(resetbtntxt);
 
-var lapbtn = document.createElement("button");
-lapbtn.setAttribute("onclick", "newLap()");
-var lapbtntxt = document.createTextNode(" LAP ");
-lapbtn.appendChild(lapbtntxt);
-
 var lapssect = document.createElement("table");
 lapssect.setAttribute("Id", "lapssection");
 var historyTable = document.createTextNode("History Time Table");
@@ -31,20 +25,21 @@ lapssect.appendChild(historyTable);
 document.body.appendChild(lbl);
 document.body.appendChild(p);
 document.body.appendChild(startbtn);
-document.body.appendChild(lapbtn);
 document.body.appendChild(resetbtn);
 var p = document.createElement("p");
 document.body.appendChild(p);
 document.body.appendChild(lapssect);    
     
     
-var m=0.0;    // minute
-var s=0.0;    // second
-var ms=0.0;   // millisecond
+var m=0.0;   
+var s=0.0;  
+var ms=0.0;   
 var newlap=1;
 var started=false;  
 var interval;
-    
+
+var timezone = new Date();
+
 function timer() {
     document.getElementById("timer").innerHTML="Timer: "+m+":"+s+":"+ms/10;
     ms+=10;
@@ -59,34 +54,41 @@ function timer() {
             s=0;
         }
     }
-    
-    function newLap() {
+
+/*function newLap() {
         if(started==true){
             var laplbl = document.createElement("label");
             laplbl.setAttribute("class","lap");
-            var laplbltxt = document.createTextNode("LAP"+" "+newlap+" - "+m+":"+s+":"+ms/10);
+            var laplbltxt = document.createTextNode("Lap"+" "+newlap+": "+m+":"+s+":"+ms/10+" "+"Timezone"+": "+timezone);
             laplbl.appendChild(laplbltxt);
-            
-            // lap diveider
             var lp = document.createElement("p");
             lapssect.appendChild(lp);
             lapssect.appendChild(laplbl);
             newlap+=1;
         }
-    }
-    
-    function start(){
-        if(started==false){
-            document.getElementById("startbtn").innerHTML=" PAUSE ";
-            interval=setInterval(timer,10);
-            started=true;
-        }
-        else{
+    }*/
+
+function start(){
+    if(started==false){        
+        document.getElementById("startbtn").innerHTML=" STOP ";
+        var laplbl = document.createElement("label");
+        var br = document.createElement("br");
+        laplbl.appendChild(br);
+        laplbl.setAttribute("class","lap");
+        var laplbltxt = document.createTextNode("Lap"+" "+newlap+": "+m+":"+s+":"+ms/10+" "+"Timezone"+": "+timezone+" ");
+        laplbl.appendChild(laplbltxt);
+        var lp = document.createElement("p");
+        lapssect.appendChild(lp);
+        lapssect.appendChild(laplbl);
+        newlap+=1;
+        interval=setInterval(timer,10);
+        started=true;
+        }else{
             clearInterval(interval);
             document.getElementById("startbtn").innerHTML=" RESUME ";
             started=false;
-        }
     }
+}
     
     function reset(){
         var lapsarr=document.getElementById("lapssection").getElementsByClassName("lap");

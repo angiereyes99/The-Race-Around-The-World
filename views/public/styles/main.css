@@ -1,5 +1,5 @@
 html, body {
-    background-color: #a2a8a3;
+    background-color: #a3b579;
     height: 100%;
     font-family: Courier;
     font-size:30px;
@@ -11,7 +11,7 @@ html, body {
 
 h1{
     font-family: Courier;
-    font-size: 45px;
+    font-size: 50px;
     color: bisque;
     overflow: auto;
 }
@@ -27,21 +27,21 @@ label{
 }
 
 #timer{
-    font-size: 26px;
+    font-size: 26px; 
 }
 
 table {
-    max-width: 65%;
     margin: auto;
     text-align: center;
+    width:100%;
 }
 
 table, th, td{
-    border: 1px solid black;
+    border: 10px solid bisque;
     border-width: medium;
+    width: 100%;
 }
 
-.btn-secondary.custom-btn {
-	background-color: #000;
-	border-color: #000;
+.lap{
+	font-size: 15px;
 }
