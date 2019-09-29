@@ -11,7 +11,7 @@
     run: node app.js (Note: to know it is conencted, console should read "Connected on port 8080!"
   
   # 4.
-    it should be running locally on lolcalhost:8080
+    it should be running locally on localhost:8080
 
   # 5.
     Enjoy!
