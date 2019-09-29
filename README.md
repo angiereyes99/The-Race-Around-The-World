@@ -14,4 +14,5 @@
     it should be running locally on localhost:8080
 
   # 5.
-    Enjoy! (It may take a 1 or 2 seconds for the timer to run and history time table to show data when you first run it. )
+    Enjoy! (It may take a 1 or 2 seconds for the timer to run and history time table to show data when you 
+            first run it. )
