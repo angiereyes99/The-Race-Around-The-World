@@ -11,7 +11,8 @@
     run: node app.js (Note: to know it is connected, console should read "Connected on port 8080!"
   
   # 4.
-    it should be running locally on localhost:8080
+    it should be running locally on localhost:8080, Also allow location in web browser so latitude and 
+    longitude will appear
 
   # 5.
     Enjoy! (It may take a 1 or 2 seconds for the timer to run and history time table to show data when you 
