@@ -15,5 +15,5 @@
     longitude will appear
 
   # 5.
-    Enjoy! (It may take a 1 or 2 seconds for the timer to run and history time table to show data when you 
+    Enjoy! (It may take a 3 or 4 seconds for the timer to run and history time table to show data when you 
             first run it. Maybe due to the geolocation calculating long and lat. )
