@@ -108,9 +108,9 @@ function reset(){
     }
         
     clearInterval(interval);
-    m=0;   
-    s=0;    
-    ms=0;   
+    m=0;   //minutes
+    s=0;   //seconds
+    ms=0;  //milliseconds
     newlap=1;
     started=false; 
     document.getElementById("startbtn").innerHTML=" Start ";
